@@ -1,24 +1,28 @@
-<h1>Weather forecast</h1>
+<h1>Todo List</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
-<p *ngIf="!forecasts"><em>Loading...</em></p>
+<p *ngIf="!todo"><em>Loading...</em></p>
 
-<table class='table' *ngIf="forecasts">
+<input type="text" [(ngModel)]="newTodo" placeholder="Enter todo item here"/>
+<button (click)="newTodoItem()" [disabled]="newTodo && newTodo.length ? '' : 'disabled'">Add</button>
+
+<table class='table' *ngIf="todo">
     <thead>
         <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Is Complete?</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let forecast of forecasts">
-            <td>{{ forecast.dateFormatted }}</td>
-            <td>{{ forecast.temperatureC }}</td>
-            <td>{{ forecast.temperatureF }}</td>
-            <td>{{ forecast.summary }}</td>
+        <tr *ngFor="let todoItem of todo">
+            <td>{{ todoItem.id }}</td>
+            <td><span *ngIf="!todoItem.isComplete">{{ todoItem.name }}</span>
+                <span *ngIf="todoItem.isComplete" style="text-decoration: line-through">{{ todoItem.name }}</span></td>
+            <td><input type="checkbox" [ngModel]="todoItem.isComplete" (click)="completeClicked(todoItem)"/> {{ todoItem.isComplete }}</td>
+            <td><button (click)="deleteItem(todoItem.id)" [disabled]="!todoItem.isComplete">Delete</button></td>
         </tr>
     </tbody>
 </table>

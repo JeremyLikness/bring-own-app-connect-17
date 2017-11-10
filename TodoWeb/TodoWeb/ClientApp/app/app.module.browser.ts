@@ -10,7 +10,8 @@ import { AppComponent } from './components/app/app.component';
         AppModuleShared
     ],
     providers: [
-        { provide: 'BASE_URL', useFactory: getBaseUrl }
+        { provide: 'BASE_URL', useFactory: getBaseUrl },
+        { provide: 'API_URL', useFactory: getApiUrl }
     ]
 })
 export class AppModule {
@@ -18,4 +19,8 @@ export class AppModule {
 
 export function getBaseUrl() {
     return document.getElementsByTagName('base')[0].href;
+}
+
+export function getApiUrl() {
+    return "http://localhost:54882/";
 }

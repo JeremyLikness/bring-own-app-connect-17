@@ -27,11 +27,19 @@ namespace TodoApi
 
             string connection = Configuration.GetConnectionString("TodoContext");
             services.AddDbContext<TodoContext>(opt => opt.UseSqlServer(connection));
+            services.AddCors(options => {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
+            });
             services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UseCors("CorsPolicy");
             app.UseMvc();
         }
 
