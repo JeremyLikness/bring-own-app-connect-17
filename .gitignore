@@ -3,3 +3,5 @@
 **/.vs
 /Src-TodoApi/Properties/PublishProfiles/Staging-TodoApi - Web Deploy.pubxml
 /Src-TodoApi/Properties/PublishProfiles/Staging-TodoApi - Web Deploy.pubxml.user
+/TodoWeb/TodoFunctionApp/Properties/PublishProfiles/staging-todo-fn - Web Deploy.pubxml
+/TodoWeb/TodoFunctionApp/Properties/PublishProfiles/staging-todo-fn - Web Deploy1.pubxml

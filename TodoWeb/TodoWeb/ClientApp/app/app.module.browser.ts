@@ -22,5 +22,5 @@ export function getBaseUrl() {
 }
 
 export function getApiUrl() {
-    return "http://staging-todoapi.azurewebsites.net/";
+    return "http://staging-todo-proxy.azurewebsites.net/";
 }

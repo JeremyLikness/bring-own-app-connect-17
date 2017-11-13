@@ -1,25 +1,36 @@
 {
-  "$schema": "http://json.schemastore.org/proxies",
+    "$schema": "http://json.schemastore.org/proxies",
   "proxies": {
-    "Get Todo List": {
+    "Collection Redirect": {
       "matchCondition": {
         "route": "/api/todo",
         "methods": [
-          "GET"
+          "GET",
+          "OPTIONS"
         ]
       },
       "backendUri": "http://staging-todoapi.azurewebsites.net/api/todo"
     },
-    "Get/Delete/Update Single Todo": {
+    "Item redirect": {
       "matchCondition": {
         "route": "/api/todo/{id}",
         "methods": [
           "GET",
           "DELETE",
-          "PUT"
+          "PUT",
+          "OPTIONS"
         ]
       },
       "backendUri": "http://staging-todoapi.azurewebsites.net/api/todo/{id}"
+    },
+    "POST Redirect": {
+      "matchCondition": {
+        "route": "/api/todo",
+        "methods": [
+          "POST"
+        ]
+      },
+      "backendUri": "http://staging-todo-fn.azurewebsites.net/api/PostTodo"
     }
   }
 }
