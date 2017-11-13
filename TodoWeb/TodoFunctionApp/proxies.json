@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json.schemastore.org/proxies",
+  "proxies": {
+    "Get Todo List": {
+      "matchCondition": {
+        "route": "/api/todo",
+        "methods": [
+          "GET"
+        ]
+      },
+      "backendUri": "http://staging-todoapi.azurewebsites.net/api/todo"
+    },
+    "Get/Delete/Update Single Todo": {
+      "matchCondition": {
+        "route": "/api/todo/{id}",
+        "methods": [
+          "GET",
+          "DELETE",
+          "PUT"
+        ]
+      },
+      "backendUri": "http://staging-todoapi.azurewebsites.net/api/todo/{id}"
+    }
+  }
+}
