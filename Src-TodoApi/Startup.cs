@@ -17,14 +17,14 @@ namespace TodoApi
         {
             var builder = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json");
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddEnvironmentVariables();
 
             Configuration = builder.Build();
         }
 
         public void ConfigureServices(IServiceCollection services)
-        {
-
+        {           
             string connection = Configuration.GetConnectionString("TodoContext");
             services.AddDbContext<TodoContext>(opt => opt.UseSqlServer(connection));
             services.AddCors(options => {

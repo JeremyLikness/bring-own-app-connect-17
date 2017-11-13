@@ -22,5 +22,5 @@ export function getBaseUrl() {
 }
 
 export function getApiUrl() {
-    return "http://localhost:54882/";
+    return "http://staging-todoapi.azurewebsites.net/";
 }
